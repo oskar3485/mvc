@@ -22,7 +22,7 @@ class Router
             require_once $filename;
             $controller = new $class_name;
         } else {
-            echo 'Error 404';
+            header('Location:/register/Error404');
         }
         if (!empty($route[2])) {
             $action_name = $route[2];
@@ -35,7 +35,6 @@ class Router
         } else {
             $params = null;
         }
-
         $controller->$action_name($params);
     }
 }

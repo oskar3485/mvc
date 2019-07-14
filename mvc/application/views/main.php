@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MVC</title>
@@ -9,15 +10,15 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-<?php
+<div class="session_view">
+    <?php
+    if(!empty($_SESSION['email'])) {
+        echo 'Добро пожаловать' . '<h3>' . $_SESSION['email'] . '</h3>'; ?>
+        <a href="/register/logout" class="btn btn-dark">Выйти</a>
+    <?php } ?>
 
-?>
-<?php  include 'application/views/' . $view_name . '.php';
-//if(!empty($_SESSION['email'])) {
-//    echo $_SESSION['email'];
-//}
-//include 'application/views/post/' . $view_name . '.php';
-?>
+</div>
+<?php  include 'application/views/' . $view_name . '.php';?>
 
 </body>
 </html>

@@ -2,13 +2,25 @@
 
 class RegisterController extends Controller
 {
+    public function test() {
+        $this->view->render('auth/404');
+    }
     public function showRegister()
     {
         $this->view->render('auth/register');
     }
+    public function logout()
+    {
+        if(!empty($_SESSION['email'])){
+            unset($_SESSION['email']);
+        }
+        header('Location:/register/showRegister');
+
+    }
     public function register()
     {
         $data = $_POST;
+        $email = $data['email'];
         $data['password'] = sha1($data['password']);
         $data ['confirm'] = sha1($data['confirm']);
         $this->getModel('user');
@@ -19,19 +31,20 @@ class RegisterController extends Controller
                 'username' => $data['username']
             ];
             $this->model->create($save_data);
+            $_SESSION['email'] = $email;
             header('Location:/main/index');
         } else {
             header('Location:/register/showRegister');
         }
     }
 
-
     public function checkUser()
     {
-//        $this->getModel('user');
-//        $users = $this->model->readAll(); 111
-        //1 Если пользователь зарегестрирован - редирект на main/index, иначе - отправляем на форму авторизации
-        $this->view->render('auth/login');
+        if (!empty($_SESSION['email'])) {
+            header('Location:/main/index');
+        } else {
+            $this->view->render('auth/login');
+        }
     }
 
     public function auth()
@@ -42,15 +55,19 @@ class RegisterController extends Controller
         $this->getModel('user');
         $users = $this->model->findWhere($email);
         if($password == $users['password']) {
-            session_start();
             $_SESSION['email'] = $email;
             if(!empty($_SESSION['email'])) {
-//                $this->view->render('main',$_SESSION['email']);
                 header('Location:/main/index');
             }
         } else {
             header ('Location:/');
         }
-
     }
+
+    public function Error404()
+    {
+        $this->view->render('auth/404');
+    }
+
+
 }
