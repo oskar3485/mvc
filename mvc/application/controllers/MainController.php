@@ -14,7 +14,7 @@ class MainController extends Controller
         foreach ($posts as $post) {
             $data['posts'][] = (object)$post;
         }
-        $this->view->render('welcome_view', $data);
+        $this->view->render('welcome', $data);
     }
 //    public function createUser()
 //    {

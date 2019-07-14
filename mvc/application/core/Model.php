@@ -40,9 +40,9 @@ class Model
 
     public function findWhere($where)
     {
-        $sql = "SELECT * FROM $this->table WHERE $where";
+        $sql = "SELECT * FROM $this->table WHERE email=:email";
         $sth = $this->db->prepare($sql);
-        $sth->execute();
+        $sth->execute([':email'=>$where]);
         $result = $sth->fetch(PDO::FETCH_ASSOC);
         return $result;
     }

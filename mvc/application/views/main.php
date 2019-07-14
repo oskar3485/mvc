@@ -9,9 +9,14 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+<?php
 
+?>
 <?php  include 'application/views/' . $view_name . '.php';
-include 'application/views/post/' . $view_name . '.php';
+//if(!empty($_SESSION['email'])) {
+//    echo $_SESSION['email'];
+//}
+//include 'application/views/post/' . $view_name . '.php';
 ?>
 
 </body>
