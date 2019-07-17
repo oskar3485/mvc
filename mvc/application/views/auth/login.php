@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row main-form">
-        <form class="" method="post" action="register/auth">
+        <form class="" method="post" action="/register/auth">
             <div class="form-group">
                 <label for="email" class="cols-sm-2 control-label">Your Email</label>
                 <div class="cols-sm-10">
@@ -24,5 +24,5 @@
             </div>
         </form>
     </div>
-    <a href="register/showRegister">Еще не зарегестрированы?</a>
+    <a href="/register/index">Еще не зарегестрированы?</a>
 </div>

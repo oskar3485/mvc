@@ -20,11 +20,11 @@ class Model
         return $result;
     }
 
-    public function readAllWhere($where)
+    public function readAllWhere($field,$value)
     {
-        $sql = "SELECT * FROM $this->table WHERE $where";
+        $sql = "SELECT * FROM $this->table WHERE $field =:field";
         $sth = $this->db->prepare($sql);
-        $sth->execute();
+        $sth->execute([':field'=>$value]);
         $result = $sth->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
@@ -38,11 +38,11 @@ class Model
         return $result;
     }
 
-    public function findWhere($where)
+    public function findWhere($field,$value,$operator='=')
     {
-        $sql = "SELECT * FROM $this->table WHERE email=:email";
+        $sql = "SELECT * FROM $this->table WHERE $field  $operator :field";
         $sth = $this->db->prepare($sql);
-        $sth->execute([':email'=>$where]);
+        $sth->execute([':field'=>$value]);
         $result = $sth->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
@@ -82,4 +82,13 @@ class Model
         $result = $delete->execute(['id' => $id]);
         return $result;
     }
+
+//    public function test()
+//    {
+//        $sql = "SELECT * FROM posts,users where posts.user_id=users.id and users.id = 13";
+//        $sth = $this->db->prepare($sql);
+//        $sth->execute();
+//        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+//        return $result;
+//    }
 }

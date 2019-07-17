@@ -1,4 +1,12 @@
-
+#exit {
+    margin-left: 180px;
+    margin-bottom: 15px ;
+}
+#auth {
+    margin-left: 1033px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 #add_post {
     text-align: right;
     margin: 10px;
@@ -82,7 +90,7 @@ span.input-group-addon i {
     margin-top: 5px;
 }
 .session_view   {
-    margin-left: 900px;
+    margin-left: 935px;
 }
 #footer{
     text-align: center;

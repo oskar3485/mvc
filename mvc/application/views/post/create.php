@@ -15,8 +15,10 @@
                 <input type="text" name="description" class="form-control" placeholder="Please write post description">
             </div>
             <div class = "btn">
-                <button type="submit"  class="btn btn-primary">Create Post</button>
+                <button id="create_post" type="submit"  class="btn btn-primary">Create Post</button>
             </div>
         </form>
     </div>
+
+    <?php print_r($data['comment']); ?>
 </div>

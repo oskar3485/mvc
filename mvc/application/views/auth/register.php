@@ -46,5 +46,5 @@
             </div>
         </form>
     </div>
-    <a href="/">Уже зарегистрированы?</a>
+    <a href="/register/checkUser">Уже зарегистрированы?</a>
 </div>

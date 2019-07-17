@@ -13,7 +13,7 @@ class Router
 
         }
         else {
-            $class_name = 'RegisterController';
+            $class_name = 'MainController';
         }
 
         $filename = 'application/controllers/' . $class_name . '.php';
@@ -21,13 +21,17 @@ class Router
         if (file_exists($filename)) {
             require_once $filename;
             $controller = new $class_name;
-        } else {
-            header('Location:/register/Error404');
         }
         if (!empty($route[2])) {
             $action_name = $route[2];
         } else {
-            $action_name = 'checkUser';
+            $action_name = 'index';
+        }
+        if(!$controller || !$action_name) {
+            $controller = new ErrorController();
+            $action_name = 'getError';
+            $controller->$action_name(404);
+
         }
 
         if (!empty($route[3])) {
@@ -36,5 +40,7 @@ class Router
             $params = null;
         }
         $controller->$action_name($params);
+
+
     }
 }
