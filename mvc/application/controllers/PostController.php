@@ -34,7 +34,11 @@ class PostController extends Controller
     {
         $this->getModel('post');
         $show = $this->model->findByid($id);
-        $this->view->render('post/show',$show);
+        $this->getConnectModel('comment');
+        $field = 'post_id';
+        $value = $id;
+        $comment = $this->connection_model->readAllWhere($field,$value);
+        $this->view->render('post/show',$show,$comment);
     }
 
     public function update($id)
@@ -81,13 +85,11 @@ class PostController extends Controller
             if(!empty($post['user_id'])) {
                 $author_id = $post['user_id'];
                 if ($_SESSION['id'] == $author_id) {
+                    $data = json_encode($post);
+                    echo $data;
                     $this->model->delete($id);
-                    header('Location:/');
-                } else {
-                    header('Location:/');
                 }
             }
-
         } else {
             $code = 403;
             $this->getError($code);

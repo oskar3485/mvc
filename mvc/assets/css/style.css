@@ -1,15 +1,41 @@
+#update_button {
+    margin-bottom: 15px;
+}
+#hide {
+    margin-top: 15px;
+    margin-left: 13px;
+}
+.navigation_button {
+    margin-left: 37px;
+}
+.navigation_button a{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 #exit {
     margin-left: 180px;
     margin-bottom: 15px ;
 }
+#create_comment_form label {
+    margin: 15px;
+}
+#create_comment_form input {
+    margin: 15px;
+    width: 1105px;
+}
+.session_view   {
+    margin-left: 910px;
+}
 #auth {
-    margin-left: 1033px;
+    margin-left: 1005px;
     margin-top: 15px;
     margin-bottom: 15px;
 }
 #add_post {
     text-align: right;
-    margin: 10px;
+    margin-right: 38px;
+    margin-bottom: 15px;
+
 }
 .post_created {
     text-align: left;
@@ -25,8 +51,24 @@
     margin-left: 5px;
     margin-right: 5px;
 }
+.comment_actions {
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+}
+.comment_actions button {
+    margin-left: 5px;
+    margin-right: 5px;
+}
 .post_footer {
     position: relative;
+}
+.comment_footer {
+    height: 40px;
+}
+#show_comment {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 #create {
     margin-left: 30px;
@@ -89,9 +131,7 @@ span.input-group-addon i {
 .login-button{
     margin-top: 5px;
 }
-.session_view   {
-    margin-left: 935px;
-}
+
 #footer{
     text-align: center;
     position: fixed;
@@ -196,10 +236,10 @@ body {
         font-size: 24px;
     }
 }
-
 @media only screen and (max-width: 480px) {
     .notfound .notfound-404 h1 {
         font-size: 182px;
     }
 }
+
 

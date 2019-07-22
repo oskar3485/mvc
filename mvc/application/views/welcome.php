@@ -1,3 +1,4 @@
+<?php include 'popup/delete.php'; ?>
 <div class="container-fluid">
     <?php if(empty($_SESSION['token'])) {  ?>
     <div id  ="auth"><a class="btn btn-primary " href="/register/checkUser">Авторизоваться</a> </div>
@@ -16,16 +17,21 @@
                 <li class="list-group-item post_footer">
                     <span class="post_created"><?=$item->created_at;?></span>
                     <span class="post_actions">
-                <?php if($_SESSION['id'] == $item->user_id) { ?>
-                        <a href="/post/delete/<?=$item->id?>">Удалить</a>
-                        <a href="/post/update/<?=$item->id?>">Редактировать</a>
-                <?php } ?>
+                        <?php  if (!empty($_SESSION['token'])) { ?>
+                            <?php if (($_SESSION['id'] == $item->user_id) ) { ?>
+                                <a id="delete_post" data-post_id="<?=$item->id?>" data-toggle="modal" data-target="#myModal" href="/post/delete/<?= $item->id ?>" >Удалить</a>
+                                <a href="/post/update/<?= $item->id ?>">Редактировать</a>
+                            <?php }
+                        }
+                        ?>
                     </span>
 
                 </li>
             </ul>
         <?php } ?>
-
     </div>
 </div>
+
+
+
 

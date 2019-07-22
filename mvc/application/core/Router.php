@@ -31,7 +31,6 @@ class Router
             $controller = new ErrorController();
             $action_name = 'getError';
             $controller->$action_name(404);
-
         }
 
         if (!empty($route[3])) {
